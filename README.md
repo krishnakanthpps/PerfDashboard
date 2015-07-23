@@ -30,6 +30,13 @@ Version 4 was a major upgrade than version 3.
 * Shield support for security
 
 
+* Bulk operations (for indexing and search operations)
+* Percolator ("reversed search" - alerts, classification)
+* Suggesters ("Did you mean ...?")
+* Index aliases (Grouping, filtering or "renaming" of indices)
+* Index templates (automatic index configuration)
+* Monitoring API (amount of memory used, number of operations)
+
 * Pie charts have nested levels
 
 ## <a name="DownloadInstaller"> Download Installer</a>
