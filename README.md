@@ -6,7 +6,7 @@ The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because
 
 2. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
 
-3. <strong>Kibana</strong> identifies actionable insights after data discovery
+3. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
 
 But LEK doesn't spell and pronounce like a one-syllable name for a big animal with a big rack.
 (actually that was taken for something else).
@@ -14,6 +14,9 @@ But LEK doesn't spell and pronounce like a one-syllable name for a big animal wi
 There is a lighter edition of Logstash.
 
 Kibana & Elasticsearch started as an open source project, built by devops people for devops people.
+
+  * https://github.com/elastic/kibana
+  * https://github.com/docker-library/kibana
 
 It's priced by node to be managed and monitor at scale (less than Splunk and doesn't run out of gas).
 There's no separate enterprise edition.
@@ -34,3 +37,32 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
+
+To scale, brokers:
+* 
+* Kafka reindexes everything.
+
+For more scale, between intermediate brokers are
+* Storm
+* Spark cache
+* Samza
+
+Flume can send to HDFS for es-hadoop
+
+
+## <a name="RockStars"> ELK Rock Stars</a>
+This tutorial was based information from these people and their work:
+
+Steve Mayzak-Director of Sales Engineering @ ElasticSearch
+did https://www.youtube.com/watch?v=uxfvNwl_MGc
+What is ELK and how can it help you discover, visualize and analyze your data?
+Oct. 14, 2014
+
+Tim and Anna Roes in Germany:
+https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/
+
+
+## <a name="Social"> Social</a>
+https://github.com/markwalkom/kibana-dashboards
+A collection of Kibana dashboards from the community
+
