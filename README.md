@@ -1,4 +1,4 @@
-# Elastisearch-Logstash-Kibana
+# Elastisearch Logstash Kibana
 How to store stuff and make sense of the ELK statck
 
 Kibana is a data discovery that uses Elasticsearch nested aggregations of data in Hadoop.
