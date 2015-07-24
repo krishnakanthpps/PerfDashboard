@@ -2,15 +2,17 @@
 How to store stuff and make sense of 
 The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because 
 
-1. <strong>Logstach</strong> collects timestamped logs from 
+1. <strong>Logstach</strong> collects timestamped logs of
+   <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
-   in a way that's searchable in a central location.
+   in a way that's searchable in a central location. 
+   Better than awk, grep, etc. on individual machines.
 
 2. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
 
 3. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
 
-But LEK doesn't spell and pronounce like a one-syllable name for a big animal with a big rack.
+COMMENTARY: But LEK doesn't spell and pronounce like a one-syllable name for a big animal with a big rack.
 (actually that was taken for something else).
 
 ## <a name="Docs"> Documentation</a>
@@ -24,8 +26,9 @@ Kibana & Elasticsearch started as an open source project, built by devops people
 
   * https://github.com/elastic/elasticsearch
   * https://github.com/elastic/kibana
-  * https://github.com/elastic/logstash
- 
+  * https://github.com/elastic/logstash was begun by @jordansissel at Dreamhost, who continues to create videos
+    https://www.youtube.com/channel/UC1Hc-GPNTYax-vAVCH333ww
+
  * https://github.com/docker-library/kibana
 
 It's priced by node to be managed and monitor at scale (less than Splunk and doesn't run out of gas).
@@ -56,8 +59,9 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
 
-## <a name="LogSources"> Sources</a>,
-Logs into Logstash can be from:
+
+## <a name="LogSources"> Logstash Sources</a>,
+Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers</strong> (origins):
 * TCP/UDP
 * Files
 * Syslog
@@ -68,6 +72,11 @@ Logs into Logstash can be from:
 
 Extendable with Ruby (JRuby run-time).
 
+Brokers go to Lucene <strong>index</strong> accessed by the storage and search server
+which has a web interface.
+
+
+## <a name="LogFormats"> Log Input Formats</a>,
 Data Formats:
 * JSON
 * XML
@@ -75,6 +84,19 @@ Data Formats:
 * Multi-line stack traces
 * Regex
 * Grok (Regex on steroids)
+
+Logstash normalizes different timestamps into your format.
+
+
+## <a name="LogOutputs"> Log Outputs</a>,
+
+* TCP/UDP
+* Email
+* Files
+* HTTP
+* Nagios monitoring
+* Alerting tools (Hipchat, SMS)
+* Graphic suites (StatsD, Graphite)
 
 
 ## <a name="Demo"> Demo</a>
