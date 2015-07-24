@@ -2,7 +2,9 @@
 How to store stuff and make sense of 
 The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because 
 
-1. <strong>Logstach</strong> collects timestamped data from various sources, filters out junk, normalize into JSON
+1. <strong>Logstach</strong> collects timestamped logs from 
+   <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
+   in a way that's searchable.
 
 2. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
 
