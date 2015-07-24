@@ -99,6 +99,18 @@ Logstash normalizes different timestamps into your format.
 * Graphic suites (StatsD, Graphite)
 
 
+## <a name="LogstashConfig"> Logstash Config</a>
+The most basic:
+
+```
+input { stdin { } }
+output {
+  stdout { codec => rubydebug }
+  elasticsearch { embedded => true }
+}
+```
+
+
 ## <a name="Demo"> Demo</a>
   * https://github.com/elastic/demo
  used Virtualbox and Vagrantup.
