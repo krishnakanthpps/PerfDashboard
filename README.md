@@ -4,7 +4,7 @@ The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because
 
 1. <strong>Logstach</strong> collects timestamped logs from 
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
-   in a way that's searchable.
+   in a way that's searchable in a central location.
 
 2. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
 
@@ -55,6 +55,27 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
+
+## <a name="LogSources"> Sources</a>,
+Logs into Logstash can be from:
+* TCP/UDP
+* Files
+* Syslog
+* Microsoft Windows Eventlogs
+* STDIN
+* WebSockets
+* zeromq
+
+Extendable with Ruby (JRuby run-time).
+
+Data Formats:
+* JSON
+* XML
+* CSV
+* Multi-line stack traces
+* Regex
+* Grok (Regex on steroids)
+
 
 ## <a name="Demo"> Demo</a>
   * https://github.com/elastic/demo
