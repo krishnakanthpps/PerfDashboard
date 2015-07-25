@@ -66,7 +66,7 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
 
-## <a name="Logstash.conf"> Logstash.conf</a>,
+## <a name="Logstash.conf"> Logstash.conf</a>
 The most basic:
 
 ```
@@ -84,9 +84,8 @@ output {
 ```
 
 
-### <a name="LogSources"> Logstash Sources</a>,
+### <a name="LogSources"> Logstash Sources</a>
 
-## <a name="LogSources"> Logstash Sources</a>,
 Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers</strong> (origins):
 * TCP/UDP
 * Files
