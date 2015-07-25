@@ -26,8 +26,8 @@ Kibana & Elasticsearch started as an open source project, built by devops people
 
   * https://github.com/elastic/elasticsearch
   * https://github.com/elastic/kibana
-  * https://github.com/elastic/logstash was begun by @jordansissel at Dreamhost, who continues to create videos
-    https://www.youtube.com/channel/UC1Hc-GPNTYax-vAVCH333ww
+  * https://github.com/elastic/logstash was begun by @jordansissel while at Dreamhost, who continues to create videos
+    https://www.youtube.com/channel/UC1Hc-GPNTYax-vAVCH333ww as Elastic employee.
 
  * https://github.com/docker-library/kibana
 
@@ -36,6 +36,11 @@ It's priced by node to be managed and monitor at scale (less than Splunk and doe
 There's no separate enterprise edition.
 
 Marvel is free until production.
+
+Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
+
+Competitors to Logstash include Graylog, LOGalyse, Scribe.
+
 
 ## <a name="Versions"> Verions</a>
 Version 4 was a major upgrade than version 3.
@@ -61,6 +66,25 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
 
+## <a name="Logstash.conf"> Logstash.conf</a>,
+The most basic:
+
+```
+input { stdin { } }
+filter {
+   grok {
+      type => "apache"
+      pattern ==> ['%{COMBINEDAPACHELOG}']
+   }
+}
+output {
+  stdout { codec => rubydebug }
+  elasticsearch { embedded => true }
+}
+```
+
+
+### <a name="LogSources"> Logstash Sources</a>,
 
 ## <a name="LogSources"> Logstash Sources</a>,
 Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers</strong> (origins):
@@ -70,13 +94,19 @@ Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers
 * Microsoft Windows Eventlogs
 * STDIN
 * WebSockets
-* zeromq
+* ZeroMQ
+* Twitter
+* SNMPTrap
+* geoIP
 
-Extendable with Ruby (JRuby run-time).
+Extendable with Ruby (JRuby run-time for performance).
+
+Logstash Forwarder is written in Go.
 
 Brokers go to Lucene <strong>index</strong> accessed by the storage and search server
 which has a web interface.
 
+The lifecycle of a log: Record, Transmit, Store, Delete.
 
 ## <a name="LogFormats"> Log Input Formats</a>,
 Data Formats:
@@ -86,11 +116,13 @@ Data Formats:
 * Multi-line stack traces
 * Regex
 * Grok (Regex on steroids)
+* Zabbix
+* SQS (Amazon)
 
 Logstash normalizes different timestamps into your format.
 
 
-## <a name="LogOutputs"> Log Outputs</a>,
+### <a name="LogOutputs"> Log Outputs</a>,
 
 * TCP/UDP
 * Email
@@ -101,16 +133,8 @@ Logstash normalizes different timestamps into your format.
 * Graphic suites (StatsD, Graphite)
 
 
-## <a name="LogstashConfig"> Logstash Config</a>
-The most basic:
-
-```
-input { stdin { } }
-output {
-  stdout { codec => rubydebug }
-  elasticsearch { embedded => true }
-}
-```
+### <a name="Filters"> Filters</a>
+labls instead of regex patterns.
 
 
 ## <a name="Demo"> Demo</a>
@@ -153,6 +177,7 @@ https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/
 * Jeff Sogolov: 
 https://www.youtube.com/watch?v=Kqs7UcCJquM
 Visualizing Logs Using ElasticSearch, Logstash and Kibana
+May 16, 2014
 
 * Agitare Technologies
 https://www.youtube.com/watch?v=uxfvNwl_MGc
@@ -163,3 +188,4 @@ What is ELK and how can it help you discover, visualize and analyze your data?
 https://github.com/markwalkom/kibana-dashboards
 A collection of Kibana dashboards from the community
 
+http://www.theagileadmin.com/2010/08/20/logging-for-success
