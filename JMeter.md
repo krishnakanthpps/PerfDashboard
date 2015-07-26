@@ -3,7 +3,7 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 1. <a href="#JMeterSetup"> JMeter Setup</a>
 2. <a href="#LogstashSetup"> Logstash Setup</a>
 3. <a href="#ElasticsearchSetup"> Elasticsearch Setup</a>
-4. <a href="#KibanaSetup"> Elasticsearch Setup</a>
+4. <a href="#KibanaSetup"> Kibana Setup</a>
 5. <a href="#KibanaGraphs"> Kibana Graphs</a>
 
 <hr />
@@ -17,7 +17,7 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 ## <a name="ElasticsearchSetup"> Elasticsearch Setup</a>
 
 
-## <a name="KibanaSetup"> Elasticsearch Setup</a>
+## <a name="KibanaSetup"> Kibana Setup</a>
 
 
 ## <a name="KibanaGraphs"> Kibana Graphs</a>
