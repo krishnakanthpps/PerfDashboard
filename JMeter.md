@@ -23,7 +23,8 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 ## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
 
-1. <a href="#NetworkVariation">Network variation</a> based on response time reaching landing page only.
+1. <a href="#NetworkVariation">One User Response Time variation</a> reaching landing page only, revealing network variations
+   and/or background jobs and other activity on the same server.
 2. <a href="#LandingPageCapacity">Landing page capacity</a> transactions-per-second maximum.
 3. <a href="#SignUpCapacity">Sign-Up capacity</a> showing how many new users can register in a short period of time.
 4. <a href="#WorkCapacity">Ramp-up capacity</a> showing how many registered users can do work at once based on 
