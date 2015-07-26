@@ -7,6 +7,8 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 0. <a href="#KibanaSetup"> Kibana Setup</a>
 0. <a href="#Resources"> Resources</a>
 
+We may break contents of each into separate files in Github.
+
 <hr />
 
 ## <a name="KibanaGraphsJMeter"> Kibana Graphs from JMeter Runs</a>
