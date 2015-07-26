@@ -9,7 +9,7 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 
 <hr />
 
-## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
+## <a name="KibanaGraphsJMeter"> Kibana Graphs from JMeter Runs</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
 
 1. <a href="#NetworkVariation">One User Response Time variation</a> reaching landing page only, revealing network variations
