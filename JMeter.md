@@ -4,7 +4,7 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 2. <a href="#LogstashSetup"> Logstash Setup</a>
 3. <a href="#ElasticsearchSetup"> Elasticsearch Setup</a>
 4. <a href="#KibanaSetup"> Kibana Setup</a>
-5. <a href="#KibanaGraphs"> Kibana Graphs</a>
+5. <a href="#KibanaGraphsJMeter"> Kibana Graphs</a>
 
 <hr />
 
@@ -20,7 +20,7 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 ## <a name="KibanaSetup"> Kibana Setup</a>
 
 
-## <a name="KibanaGraphs"> Kibana Graphs</a>
+## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
 
 1. <a href="#NetworkVariation">Network variation</a> based on response time reaching landing page only.
