@@ -36,14 +36,12 @@ It's priced by node to be managed and monitor at scale (less than Splunk and doe
 There's no separate enterprise edition.
 
 Marvel is free until production.
-
 Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
 
+
+## <a name="Competitors"> Compeitive Features</a>
+
 Competitors to Logstash include Graylog, LOGalyse, Scribe.
-
-
-## <a name="Versions"> Verions</a>
-Version 4 was a major upgrade than version 3.
 
 * D3 JS library flexibility
 * Watcher - 
@@ -60,11 +58,21 @@ Version 4 was a major upgrade than version 3.
 * Pie charts have nested levels
 
 
+## <a name="Versions"> Verions</a>
+Version 4 was a major upgrade than version 3.
+
+
+
 ## <a name="DownloadInstaller"> Download Installer</a>
 Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
+
+
+## <a name="Dockerf"> Docker package</a>
+
+
 
 ## <a name="Logstash.conf"> Logstash.conf</a>
 The most basic:
