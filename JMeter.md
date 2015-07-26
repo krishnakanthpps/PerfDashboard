@@ -1,7 +1,7 @@
 To load JMeter output into Logstash and aggregated in Elasticsearch so that Kibana can display analytics graphs:
 
 0. <a href="#KibanaGraphsJMeter"> Kibana Graphs</a> - the objective of prepatory steps below:
-0. <a href="#AUT"> Application Under Test Setup</a>
+0. <a href="#AUTSetup"> Application Under Test Setup</a>
 0. <a href="#JMeterSetup"> JMeter Setup</a>
 0. <a href="#LogstashSetup"> Logstash Setup</a>
 0. <a href="#ElasticsearchSetup"> Elasticsearch Setup</a>
@@ -51,6 +51,7 @@ What I’m hoping for is a few graph in Kibana that illustrates test run conclus
 
 
 <hr />
+## <a name="AUTSetup"> Application Under Test Setup</a>
 
 ## <a name="JMeterSetup"> JMeter Setup</a>
 
