@@ -1,24 +1,13 @@
 To load JMeter output into Logstash and aggregated in Elasticsearch so that Kibana can display analytics graphs:
 
-1. <a href="#JMeterSetup"> JMeter Setup</a>
-2. <a href="#LogstashSetup"> Logstash Setup</a>
-3. <a href="#ElasticsearchSetup"> Elasticsearch Setup</a>
-4. <a href="#KibanaSetup"> Kibana Setup</a>
-5. <a href="#KibanaGraphsJMeter"> Kibana Graphs</a>
+0. <a href="#KibanaGraphsJMeter"> Kibana Graphs</a> - the objective of prepatory steps below:
+0. <a href="#JMeterSetup"> JMeter Setup</a>
+0. <a href="#LogstashSetup"> Logstash Setup</a>
+0. <a href="#ElasticsearchSetup"> Elasticsearch Setup</a>
+0. <a href="#KibanaSetup"> Kibana Setup</a>
+0. <a href="#Resources"> Resources</a>
 
 <hr />
-
-## <a name="JMeterSetup"> JMeter Setup</a>
-
-
-## <a name="LogstashSetup"> Logstash Setup</a>
-
-
-## <a name="ElasticsearchSetup"> Elasticsearch Setup</a>
-
-
-## <a name="KibanaSetup"> Kibana Setup</a>
-
 
 ## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
@@ -57,10 +46,26 @@ What I’m hoping for is a few graph in Kibana that illustrates test run conclus
 ### <a name="Longevity">Longevity</a> 
    showing memory leaks identified during longer runs.
 
+
 <hr />
-## Resources:
+
+## <a name="JMeterSetup"> JMeter Setup</a>
+
+
+## <a name="LogstashSetup"> Logstash Setup</a>
+
+
+## <a name="ElasticsearchSetup"> Elasticsearch Setup</a>
+
+
+## <a name="KibanaSetup"> Kibana Setup</a>
+
+
+
+<hr />
+## <a name="Resources"> Resources</a>
 http://theworkaholic.blogspot.in/2015/05/graphs-for-jmeter-using-elasticsearch.html
 
 http://blog.sematext.com/2015/06/23/replaying-elasticsearch-slowlogs-logstash-jmeter/
 
-
+http://ecmarchitect.com/archives/2014/09/09/3932
