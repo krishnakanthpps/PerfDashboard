@@ -63,7 +63,7 @@ What I’m hoping for is a few graph in Kibana that illustrates test run conclus
 
 
 <hr />
-## <a name="Resources"> Resources</a>
+## <a name="Resources"> Resources specifically about viewing JMeter using the ELK stack</a>
 http://theworkaholic.blogspot.in/2015/05/graphs-for-jmeter-using-elasticsearch.html
 
 http://blog.sematext.com/2015/06/23/replaying-elasticsearch-slowlogs-logstash-jmeter/
