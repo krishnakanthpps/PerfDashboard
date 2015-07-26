@@ -20,8 +20,6 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 ## <a name="KibanaSetup"> Kibana Setup</a>
 
 
-<hr />
-
 ## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
 
@@ -33,11 +31,7 @@ What I’m hoping for is a few graph in Kibana that illustrates test run conclus
 5. <a href="#CapacityUsage">Capacity usage</a> based on memory per user over time.
 6. <a href="#Longevity">Longevity</a> showing memory leaks identified during longer runs.
 
-## Resources:
-http://theworkaholic.blogspot.in/2015/05/graphs-for-jmeter-using-elasticsearch.html
-
-http://blog.sematext.com/2015/06/23/replaying-elasticsearch-slowlogs-logstash-jmeter/
-
+<hr />
 
 ### <a name="NetworkVariation">Network variation</a>
 
@@ -61,3 +55,11 @@ http://blog.sematext.com/2015/06/23/replaying-elasticsearch-slowlogs-logstash-jm
 
 ### <a name="Longevity">Longevity</a> 
    showing memory leaks identified during longer runs.
+
+<hr />
+## Resources:
+http://theworkaholic.blogspot.in/2015/05/graphs-for-jmeter-using-elasticsearch.html
+
+http://blog.sematext.com/2015/06/23/replaying-elasticsearch-slowlogs-logstash-jmeter/
+
+
