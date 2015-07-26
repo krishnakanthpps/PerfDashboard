@@ -20,6 +20,8 @@ To load JMeter output into Logstash and aggregated in Elasticsearch so that Kiba
 ## <a name="KibanaSetup"> Kibana Setup</a>
 
 
+<hr />
+
 ## <a name="KibanaGraphsJMeter"> Kibana Graphs of JMeter</a>
 What I’m hoping for is a few graph in Kibana that illustrates test run conclusions:
 
