@@ -16,6 +16,13 @@ COMMENTARY: But LEK doesn't spell and pronounce like a one-syllable name for a b
 (actually that was taken for something else).
 
 ## <a name="Docs"> Documentation</a>
+Elasticsearch provides consistency to different time stamp formats.
+
+Kibana "democratizes" data by putting a front-end to access data
+in a searcheable in fast a meaningful ways.
+
+
+## <a name="Docs"> Documentation</a>
 https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html
 The Definitive Guide to Elastisearch you can submit updates at
 https://github.com/elastic/elasticsearch-definitive-guide
@@ -28,6 +35,7 @@ Kibana & Elasticsearch started as an open source project, built by devops people
   * https://github.com/elastic/kibana
   * https://github.com/elastic/logstash was begun by @jordansissel while at Dreamhost, who continues to create videos
     https://www.youtube.com/channel/UC1Hc-GPNTYax-vAVCH333ww as Elastic employee.
+    His talk: https://www.youtube.com/watch?v=fwMnb4-t8vo
 
  * https://github.com/docker-library/kibana
 
@@ -165,6 +173,10 @@ Flume can send to HDFS for es-hadoop
 ## <a name="RockStars"> ELK Rock Stars</a>
 This tutorial was based information from these people and their work:
 
+* at Elasticsearch
+  https://www.youtube.com/watch?v=Epe63Uu-IO0&spfreload=1
+  Mar 17, 2015
+
 * Andrew Puch @gmail 
 https://www.linkedin.com/in/apuch
 who runs http://andrewpuch.com/
@@ -190,6 +202,9 @@ May 16, 2014
 https://www.youtube.com/watch?v=uxfvNwl_MGc
 What is ELK and how can it help you discover, visualize and analyze your data?
 
+* Spencer Alger: 
+  
+  The ELK Stack (Elasticsearch Logstash Kibana) 
    
 ## <a name="Social"> Social</a>
 https://github.com/markwalkom/kibana-dashboards
