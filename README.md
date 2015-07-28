@@ -202,10 +202,12 @@ May 16, 2014
 https://www.youtube.com/watch?v=uxfvNwl_MGc
 What is ELK and how can it help you discover, visualize and analyze your data?
 
-* Spencer Alger: 
-  
-  The ELK Stack (Elasticsearch Logstash Kibana) 
-   
+* Spencer Alger (@spencerAlger) 
+  His intro to the ELK Stack Feb 25, 2015
+  https://www.youtube.com/watch?v=QyWZ_wQEM9k
+  He works on JS libraries at Elastic
+  http://github.com/spalger
+
 ## <a name="Social"> Social</a>
 https://github.com/markwalkom/kibana-dashboards
 A collection of Kibana dashboards from the community
