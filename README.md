@@ -2,7 +2,7 @@
 How to store stuff and make sense of 
 The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because 
 
-1. <strong>Logstach</strong> collects timestamped logs of
+1. <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
