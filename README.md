@@ -16,11 +16,21 @@ COMMENTARY: But LEK doesn't spell and pronounce like a one-syllable name for a b
 (actually that was taken for something else).
 
 
-## <a name="Docs"> Documentation</a>
+## <a name="Why"> Why</a>
 Elasticsearch provides consistency to different time stamp formats.
 
 Kibana "democratizes" data by putting a front-end to access data
 in a searcheable in fast a meaningful ways.
+
+
+
+## <a name="Managers"> Managers</a>
+1. To manage Logstash ???
+
+2. To manage our Elasticsearch indexes, use <strong>Curator</strong> at https://github.com/elasticsearch/curator
+   which enables admins to schedule optimisation, close and delete operations.
+
+3. To manage Kibana ???
 
 
 ## <a name="Docs"> Documentation</a>
@@ -65,7 +75,6 @@ Competitors to Logstash include
 * Watcher - 
 * Shield support for security
 
-
 * Bulk operations (for indexing and search operations)
 * Percolator ("reversed search" - alerts, classification)
 * Suggesters ("Did you mean ...?")
@@ -87,6 +96,12 @@ Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
+
+Configure Elasticsearch at 
+http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
+
+Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
+http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
 
 ### <a name="Docker"> Docker package</a>
