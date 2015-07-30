@@ -49,11 +49,15 @@ Marvel is free until production.
 Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
 
 
-## <a name="Competitors"> Competitive Features</a>
+## <a name="Competitors"> Competitors</a>
 
-Competitors to Logstash include Graylog, LOGalyse, Scribe.
-
-[Stackify](http://stackify.com/smart-error-log-management-trial-sign)
+Competitors to Logstash include 
+* Flume+Elasticsearch+Kibana or Flume+HDFS+HIVE+PIG
+* Greylog2
+* Fluentd+MongoDB
+* [Stackify](http://stackify.com/smart-error-log-management-trial-sign)
+* LOGalyse 
+* Scribe
 
 
 ## <a name="CompetitiveFeatures"> Competitive Features</a>
