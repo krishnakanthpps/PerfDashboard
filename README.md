@@ -15,6 +15,7 @@ The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because
 COMMENTARY: But LEK doesn't spell and pronounce like a one-syllable name for a big animal with a big rack.
 (actually that was taken for something else).
 
+
 ## <a name="Docs"> Documentation</a>
 Elasticsearch provides consistency to different time stamp formats.
 
@@ -39,6 +40,7 @@ Kibana & Elasticsearch started as an open source project, built by devops people
 
  * https://github.com/docker-library/kibana
 
+
 ## <a name="Pricing"> Pricing</a>
 It's priced by node to be managed and monitor at scale (less than Splunk and doesn't run out of gas).
 There's no separate enterprise edition.
@@ -47,10 +49,14 @@ Marvel is free until production.
 Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
 
 
-## <a name="Competitors"> Compeitive Features</a>
+## <a name="Competitors"> Competitive Features</a>
 
 Competitors to Logstash include Graylog, LOGalyse, Scribe.
 
+[Stackify](http://stackify.com/smart-error-log-management-trial-sign)
+
+
+## <a name="CompetitiveFeatures"> Competitive Features</a>
 * D3 JS library flexibility
 * Watcher - 
 * Shield support for security
@@ -69,6 +75,7 @@ Competitors to Logstash include Graylog, LOGalyse, Scribe.
 ## <a name="Versions"> Verions</a>
 Version 4 was a major upgrade than version 3.
 
+Logstash v1.5
 
 
 ## <a name="DownloadInstaller"> Download Installer</a>
@@ -78,7 +85,7 @@ A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
 
 
-## <a name="Dockerf"> Docker package</a>
+### <a name="Docker"> Docker package</a>
 
 
 
@@ -194,9 +201,9 @@ Oct. 14, 2014
 https://www.timroes.de/2015/02/07/kibana-4-tutorial-part-1-introduction/
 
 * Jeff Sogolov: 
-https://www.youtube.com/watch?v=Kqs7UcCJquM
-Visualizing Logs Using ElasticSearch, Logstash and Kibana
-May 16, 2014
+  https://www.youtube.com/watch?v=Kqs7UcCJquM
+  Visualizing Logs Using ElasticSearch, Logstash and Kibana
+  May 16, 2014
 
 * Agitare Technologies
 https://www.youtube.com/watch?v=uxfvNwl_MGc
@@ -207,6 +214,22 @@ What is ELK and how can it help you discover, visualize and analyze your data?
   https://www.youtube.com/watch?v=QyWZ_wQEM9k
   He works on JS libraries at Elastic
   http://github.com/spalger
+
+* James Turnbull (at Kickstarter)
+  wrote $9.99 The Logstash v1.5 Book Kindle Edition
+  http://www.amazon.com/Logstash-Book-James-Turnbull-ebook/dp/B00B9JQTCO/ref=wilsonslifenotes
+
+*  Alberto Paro wrote
+   ElasticSearch Cookbook $20.44
+   http://www.amazon.com/ElasticSearch-Cookbook-Alberto-Paro/dp/1782166629
+   
+* Clinton Gormley and Zachary Tong
+  Elasticsearch: The Definitive Guide Feb 7, 2015 $22.55
+  http://www.amazon.com/Elasticsearch-Definitive-Guide-Clinton-Gormley/dp/1449358543/
+
+* Radu Gheorghe (Author), Matthew Lee Hinman  (Author), & 1 more
+  Elasticsearch in Action Paperback – August 31, 2015
+  http://www.amazon.com/Elasticsearch-Action-Radu-Gheorghe/dp/1617291625/
 
 ## <a name="Social"> Social</a>
 https://github.com/markwalkom/kibana-dashboards
