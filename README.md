@@ -2,24 +2,30 @@ This repo contains notes, configuration, and source files on creating a way to a
 with <strong>only free/open source software</strong>. The components include the 
 "ELK" stack, where stands for Elasticsearch Logstash Kibana:
 
-1). <a href="#Logstash">Logstash</a> collects timestamped logs of
+To create load on the system:
+
+1). JMeter (Java)
+
+2). <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
 
-2). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
+3). Logstash Forwarder 
 
-3). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
+4). RabbitMQ (between Logstash producers and consumers) to ensure scalability.
+
+5). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
+
+6). <strong>Curator</strong> at https://github.com/elasticsearch/curator
+   to manage our Elasticsearch indexes
+   by enabling admins to schedule operations to optimise, close, and delete indexes.
+
+7). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
    
-To ensure scalability:
-
-4). RabbitMQ
- 
-To create load on the system:
-
-5). JMeter (Java)
+8). An alerting sytem.
 
 
 
@@ -33,9 +39,6 @@ in a searcheable in fast a meaningful ways.
 
 ## <a name="Managers"> Managers</a>
 1. To manage Logstash ???
-
-2. To manage our Elasticsearch indexes, use <strong>Curator</strong> at https://github.com/elasticsearch/curator
-   which enables admins to schedule optimisation, close and delete operations.
 
 3. To manage Kibana ???
 
