@@ -1,19 +1,26 @@
+This repo contains notes, configuration, and source files on creating a way to analyze
+with <strong>only free/open source software</strong>. The components include the 
+"ELK" stack, where stands for Elasticsearch Logstash Kibana:
 
-How to store stuff and make sense of 
-The "ELK" stack (for Elasticsearch Logstash Kibana) really should be LEK because 
-
-1. <a href="#Logstash">Logstash</a> collects timestamped logs of
+1). <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
 
-2. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
+2). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop
 
-3. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
+3). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
+   and presents visualization (a dashboard).
+   
+To ensure scalability:
 
-COMMENTARY: But LEK doesn't spell and pronounce like a one-syllable name for a big animal with a big rack.
-(actually that was taken for something else).
+4). RabbitMQ
+ 
+To create load on the system:
+
+5). JMeter (Java)
+
 
 
 ## <a name="Why"> Why</a>
