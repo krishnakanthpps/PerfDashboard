@@ -83,7 +83,7 @@ Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
 ## <a name="Competitors"> Competitors</a>
 
 Competitors to Logstash include 
-* Flume+Elasticsearch+Kibana or Flume+HDFS+HIVE+PIG
+* Cloudera <a target="_blank" href="https://github.com/cloudera/flume"> Flume</a> +Elasticsearch+Kibana or Flume+HDFS+HIVE+PIG
 * Greylog2
 * Fluentd+MongoDB
 * [Stackify](http://stackify.com/smart-error-log-management-trial-sign)
