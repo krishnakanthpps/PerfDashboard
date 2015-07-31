@@ -33,8 +33,6 @@ with <strong>only free/open source software</strong>. The components include the
    to manage Elasticsearch indexes
    by enabling admins to schedule operations to optimise, close, and delete indexes.
 
-0. Kafka reindexes everything.
-
 0. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
    
@@ -91,6 +89,9 @@ Competitors to Logstash include
 * [Stackify](http://stackify.com/smart-error-log-management-trial-sign)
 * LOGalyse 
 * Scribe
+* Apache Kafka <a target="_blank"      href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">
+  used at LinkedIn</a>
+
 
 
 ## <a name="CompetitiveFeatures"> Competitive Features</a>
