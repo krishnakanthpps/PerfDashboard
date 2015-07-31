@@ -159,8 +159,8 @@ Logstash Forwarder is written in Go.
 
 
 ### <a name="LogSources"> Logstash Sources</a>
-
 Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers</strong> (origins):
+
 * TCP/UDP
 * Files
 * Syslog
@@ -191,7 +191,7 @@ Data Formats:
 Logstash normalizes different timestamps into your format.
 
 
-### <a name="LogOutputs"> Log Outputs</a>,
+### <a name="LogOutputs"> Logstash Outputs</a>,
 
 * TCP/UDP
 * Email
@@ -201,9 +201,20 @@ Logstash normalizes different timestamps into your format.
 * Alerting tools (Hipchat, SMS)
 * Graphic suites (StatsD, Graphite)
 
+* AMQP
+* Cloudwatch
+* Redis
+* Mogodb
+
 
 ### <a name="Filters"> Filters</a>
 labls instead of regex patterns.
+
+* Grok
+* Grep
+* Alter
+* Date
+* Multiline
 
 
 ## <a name="LogstashInstall"> Logstash Install</a>
@@ -234,7 +245,11 @@ Logstash is extendable with Ruby.
 
 
 ## <a name="Kibana"> Kibana Dashboard</a>
+Kibana replaces the Logstash Web UI.
+It is built on Ruby with Sinatra framework.
+
 https://www.digitalocean.com/community/tutorials/how-to-use-kibana-dashboards-and-visualizations
+
 
 For more scale, between intermediate brokers are
 * Storm
