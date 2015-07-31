@@ -3,38 +3,41 @@ with <strong>only free/open source software</strong>. The components include the
 "ELK" stack, where stands for Elasticsearch Logstash Kibana:
 
 
-1). Github for documentation and source control.
+0. Github for documentation and source control.
 
-2). JMeter to create load on the system artificially by using Java programs to 
+0. JMeter to create load on the system artificially by using Java programs to 
     emulate many real clients.
 
-3). Maven to package java
+0. Maven to package java
 
-4). Puppet to manage configurations
+0. Puppet to manage configurations
 
-5). Docker 
+0. Docker 
+0. NGNX
 
-6). <a href="#Logstash">Logstash</a> collects timestamped logs of
+0. <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
 
-7). <a href="#LogstashForwarder"> Logstash Forwarder</a> to direct log entry flow within internet-scale production environments.
+0. <a href="#LogstashForwarder"> Logstash Forwarder</a> to direct log entry flow within internet-scale production environments.
 
-8). RabbitMQ queue services between Logstash producers and consumers to ensure scalability
+0. RabbitMQ queue services between Logstash producers and consumers to ensure scalability
    by absorbing spikes.
 
-9). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
+0. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
 
-10). <strong>Curator</strong> at https://github.com/elasticsearch/curator
-   to manage our Elasticsearch indexes
+0. <strong>Curator</strong> at https://github.com/elasticsearch/curator
+   to manage Elasticsearch indexes
    by enabling admins to schedule operations to optimise, close, and delete indexes.
 
-11). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
+0. Kafka reindexes everything.
+
+0. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
    
-12). An alerting sytem.
+0. An alerting sytem.
 
 
 
@@ -224,10 +227,8 @@ Logstash is extendable with Ruby.
  used Virtualbox and Vagrantup.
 
 
-## <a name="Scaling"> Scaling</a>
-To scale, brokers:
-* 
-* Kafka reindexes everything.
+## <a name="Kibana"> Kibana Dashboard</a>
+https://www.digitalocean.com/community/tutorials/how-to-use-kibana-dashboards-and-visualizations
 
 For more scale, between intermediate brokers are
 * Storm
@@ -239,6 +240,7 @@ Flume can send to HDFS for es-hadoop
 
 ## <a name="RockStars"> ELK Rock Stars</a>
 This tutorial was based information from these people and their work:
+
 
 * at Elasticsearch
   https://www.youtube.com/watch?v=Epe63Uu-IO0&spfreload=1
