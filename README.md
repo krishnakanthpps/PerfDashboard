@@ -4,6 +4,9 @@ with <strong>only free/open source software</strong>. The components include the
 
 
 0. Github for documentation and source control.
+0. Linux Ubuntu running on all servers.
+0. <a href="#LogstashForwarder"> Logstash Forwarder</a> 
+   on all servers to direct log entry flow to a collector.
 
 0. JMeter to create load on the system artificially by using Java programs to 
     emulate many real clients.
@@ -20,8 +23,6 @@ with <strong>only free/open source software</strong>. The components include the
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
-
-0. <a href="#LogstashForwarder"> Logstash Forwarder</a> to direct log entry flow within internet-scale production environments.
 
 0. RabbitMQ queue services between Logstash producers and consumers to ensure scalability
    by absorbing spikes.
