@@ -41,12 +41,16 @@ with <strong>only free/open source software</strong>. The components include the
 
 
 ## <a name="Why"> Why</a>
+Instead of piping individual logs such as:
+
+```
+$ log_producer | grep ... | sed ... | awk ... | tee output \ | sort | uniq -c | sort -n
+```
+
 Elasticsearch provides consistency to different time stamp formats.
 
 Kibana "democratizes" data by putting a front-end to access data
 in a searcheable in fast a meaningful ways.
-
-
 
 ## <a name="Managers"> Managers</a>
 1. To manage Logstash ???
