@@ -20,7 +20,7 @@ with <strong>only free/open source software</strong>. The components include the
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
 
-7). Logstash Forwarder 
+7). <a href="LogstashForwarder"> Logstash Forwarder</a> to direct log entry flow within internet-scale production environments.
 
 8). RabbitMQ queue services between Logstash producers and consumers to ensure scalability
    by absorbing spikes.
