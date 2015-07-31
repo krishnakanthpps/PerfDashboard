@@ -2,30 +2,39 @@ This repo contains notes, configuration, and source files on creating a way to a
 with <strong>only free/open source software</strong>. The components include the 
 "ELK" stack, where stands for Elasticsearch Logstash Kibana:
 
-To create load on the system:
 
-1). JMeter (Java)
+1). Github for documentation and source control.
 
-2). <a href="#Logstash">Logstash</a> collects timestamped logs of
+2). JMeter to create load on the system artificially by using Java programs to 
+    emulate many real clients.
+
+3). Maven to package java
+
+4). Puppet to manage configurations
+
+5). Docker 
+
+6). <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
    <a href="#LogSources">various sources</a>, parse to filter out junk, index them, and normalize into JSON
    in a way that's searchable in a central location. 
    Better than awk, grep, etc. on individual machines.
 
-3). Logstash Forwarder 
+7). Logstash Forwarder 
 
-4). RabbitMQ (between Logstash producers and consumers) to ensure scalability.
+8). RabbitMQ queue services between Logstash producers and consumers to ensure scalability
+   by absorbing spikes.
 
-5). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
+9). <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
 
-6). <strong>Curator</strong> at https://github.com/elasticsearch/curator
+10). <strong>Curator</strong> at https://github.com/elasticsearch/curator
    to manage our Elasticsearch indexes
    by enabling admins to schedule operations to optimise, close, and delete indexes.
 
-7). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
+11). <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
    
-8). An alerting sytem.
+12). An alerting sytem.
 
 
 
@@ -119,7 +128,7 @@ http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
 
 ## <a name="Logstash.conf"> Logstash.conf</a>
-The most basic:
+The most basic configuration file:
 
 ```
 input { stdin { } }
@@ -135,6 +144,10 @@ output {
 }
 ```
 
+## <a name="LogstashForwarder"> Logstash Forwarder</a>
+Logstash Forwarder is written in Go.
+
+
 
 ### <a name="LogSources"> Logstash Sources</a>
 
@@ -149,10 +162,6 @@ Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers
 * Twitter
 * SNMPTrap
 * geoIP
-
-Extendable with Ruby (JRuby run-time for performance).
-
-Logstash Forwarder is written in Go.
 
 Brokers go to Lucene <strong>index</strong> accessed by the storage and search server
 which has a web interface.
@@ -186,6 +195,28 @@ Logstash normalizes different timestamps into your format.
 
 ### <a name="Filters"> Filters</a>
 labls instead of regex patterns.
+
+
+## <a name="LogstashInstall"> Logstash Install</a>
+A sample using the .conf files described above:
+
+```
+#install logstash (based on http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html)
+sudo wget https://download.elasticsearch.org/logstash/logstash/logstash-1.3.3-flatjar.jar
+sudo mkdir /opt/logstash
+sudo mv logstash-1.3.2-flatjar.jar /opt/logstash/logstash.jar
+sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello.conf
+sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello-search.conf
+sudo mv hello.conf /opt/logstash/hello.conf
+sudo mv hello-search.conf /opt/logstash/hello-search.conf
+cd /opt/logstash/
+#example configuration
+java -jar logstash.jar agent -f hello.conf
+java -jar logstash.jar agent -f hello-search.conf
+```
+
+The java here is a JRuby run-time (for performance).
+Logstash is extendable with Ruby.
 
 
 ## <a name="Demo"> Demo</a>
