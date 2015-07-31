@@ -4,7 +4,7 @@ with <strong>only free/open source software</strong>. The components include the
 
 
 0. Github for documentation and source control.
-0. Linux Ubuntu running on all servers.
+0. Linux Ubuntu (Amazon build) running on all servers.
 0. <a href="#LogstashForwarder"> Logstash Forwarder</a> 
    on all servers to direct log entry flow to a collector.
 
@@ -16,7 +16,7 @@ with <strong>only free/open source software</strong>. The components include the
 0. Puppet to manage configurations
 
 0. Docker 
-0. NGNX to distribute among servers
+0. NGINX to distribute among servers
 
 0. <a href="#Logstash">Logstash</a> collects timestamped logs of
    <a href="#LogFormats">various formats</a>, from
