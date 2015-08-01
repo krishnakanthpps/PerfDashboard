@@ -5,6 +5,7 @@ with <strong>only free/open source software</strong>. The components include the
 
 0. Github for documentation and source control.
 0. Linux Ubuntu (Amazon build) running on all servers.
+0. <a href="#Docker"> Docker</a> to install packages on servers.
 0. <a href="#LogstashForwarder"> Logstash Forwarder</a> 
    on all servers to direct log entry flow to a collector.
 
@@ -15,7 +16,6 @@ with <strong>only free/open source software</strong>. The components include the
 
 0. Puppet to manage configurations
 
-0. Docker 
 0. NGINX to distribute among servers
 
 0. <a href="#Logstash">Logstash</a> collects timestamped logs of
@@ -28,7 +28,7 @@ with <strong>only free/open source software</strong>. The components include the
    by absorbing spikes.
 
 0. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
-
+0. Elastic's Shield to Secure data in Elasticsearch. 
 0. <strong>Curator</strong> at https://github.com/elasticsearch/curator
    to manage Elasticsearch indexes
    by enabling admins to schedule operations to optimise, close, and delete indexes.
@@ -36,9 +36,9 @@ with <strong>only free/open source software</strong>. The components include the
 0. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
    
-0. An alerting sytem.
-
-
+0. <strong>Marvel</strong> to Monitor Elasticsearch deployments. 
+0. <a href="#Watcher">Watcher</a> Alerting for Elasticsearch. 
+0. <strong>Packetbeat</strong> to Analyze network packet data. 
 
 ## <a name="Why"> Why</a>
 Instead of piping individual logs such as:
@@ -113,13 +113,60 @@ Competitors to Logstash include
 * Pie charts have nested levels
 
 
-## <a name="Versions"> Verions</a>
-Version 4 was a major upgrade than version 3.
+## <a name="DownloadVersions"> Download Version Sets</a>
+1. Identify the set of versions of various components from their web pages:
 
-Logstash v1.5
+| URL to Website | Version | Length |
+| -------------- | ------- | -----: |
+| https://www.elastic.co/downloads/logstash      | 1.5.3 |  88M |
+| https://www.elastic.co/downloads/logstash      | 1.5.3 | 5.8M |
+| https://www.elastic.co/downloads/elasticsearch | 1.7.1 |  27M |
+| https://www.elastic.co/downloads/kibana        | 3.1.3 | 1.0M |
+
+Clicking Download in these web pages will download to your default Downloads folder.
+
+NOTE: Kibana version 4 is a major upgrade over version 3.
+
+2. PROTIP: Create a folder such as *ELK_installers_20150801* so the same set of versions tested together travel together.
+
+3. If you rather download and expand using a script, revise the version number in the script below.
+   Each component is usually installed to a different machine.
+   So a different download installation script is used for each machine.
+
+   ```
+cd ELK_Installers_20150801
+
+wget https://download.elastic.co/logstash/logstash/logstash-1.5.3.tar.gz
+tar -zxvf logstash-1.5.3.tar.gz
+
+wget https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder_darwin_amd64
+
+wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1.tar.gz
+tar -zxvf elasticsearch-1.7.1.tar.gz
+
+wget https://download.elastic.co/kibana/kibana/kibana-3.1.3.tar.gz
+tar -zxvf kibana-3.1.3.tar.gz
+   ```
+
+4. Follow the <strong>Installation Steps</strong>
 
 
-## <a name="DownloadInstaller"> Download Installer</a>
+
+### <a name="InstallMac"> Download and Install ELK on Mac</a>
+1. Visit <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
+   and click to download each component.
+
+http://krypted.com/windows-server/stashbox-turning-a-mac-mini-into-a-logstash-server/
+suggests keeping older binaries in case they get revved out and a script against them:
+ 
+To download Logstash and unzip it:
+
+```
+wget https://download.elastic.co/logstash/logstash/logstash-1.5.0.tar.gz
+tar -zxvf logstash-1.5.0.tar.gz
+```
+
+## <a name="DownloadInstaller"> Configure</a>
 Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
@@ -133,7 +180,6 @@ http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
 
 ### <a name="Docker"> Docker package</a>
-
 
 
 ## <a name="Logstash.conf"> Logstash.conf</a>
@@ -259,6 +305,13 @@ For more scale, between intermediate brokers are
 Flume can send to HDFS for es-hadoop
 
 
+## <a name="Watcher"> Watcher</a>
+
+https://www.elastic.co/webinars/watcher-alerting-for-elasticsearch?baymax=rtp&elektra=downloads&iesrc=ctr
+
+Sends notifications via PagerDuty
+ 
+ 
 ## <a name="RockStars"> ELK Rock Stars</a>
 This tutorial was based information from these people and their work:
 
@@ -319,3 +372,4 @@ https://github.com/markwalkom/kibana-dashboards
 A collection of Kibana dashboards from the community
 
 http://www.theagileadmin.com/2010/08/20/logging-for-success
+
