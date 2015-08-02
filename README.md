@@ -4,7 +4,8 @@ with <strong>only free/open source software</strong>. The components include the
 
 
 0. Github for documentation and source control.
-0. Linux Ubuntu (Amazon build) running on all servers.
+0. Linux Ubuntu (Amazon build) running on all servers for DEB packages installed by command dpkg
+
 0. <a href="#Docker"> Docker</a> to install packages on servers.
 0. <a href="#LogstashForwarder"> Logstash Forwarder</a> 
    on all servers to direct log entry flow to a collector.
@@ -51,6 +52,7 @@ Elasticsearch provides consistency to different time stamp formats.
 
 Kibana "democratizes" data by putting a front-end to access data
 in a searcheable in fast a meaningful ways.
+
 
 ## <a name="Managers"> Managers</a>
 1. To manage Logstash ???
@@ -166,6 +168,8 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
   Other folders in /usr/local include include, Cellar, Library, opt, lib, bin, sbin, man.
   So a better location may be <strong>/usr/local/opt</strong>?
 
+  Packages install Logstash into the /opt directory, /opt/ logstash.
+
    A machine must have at least 85% disk space free to avoid <strong>low disk watermark</strong> errors.
 
 5. Once expanded, archive the installer folder and delete the tar.gz files.
@@ -210,7 +214,7 @@ output {
 
 
 ## <a name="LogstashInstall"> Logstash Install</a>
-A sample using the .conf files described above:
+A sample:
 
 ```
 #install logstash (based on http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html)
@@ -242,7 +246,7 @@ Logstash is extendable with Ruby.
    list of command line flags</a>. 
    If the command includes `--configtest` or just `-t`, logstash stops after processing it.
    
-   If a folder is specified, all .conf files in it are loaded.
+   If a folder is specified, such as /etc/logstash/conf.d, all .conf files in it are loaded.
    
    To stop on a Mac, hold down control and press C. On Windows, it's Ctrl+C.
 
@@ -295,7 +299,7 @@ Data Formats:
 Logstash normalizes different timestamps into your format.
 
 
-### <a name="LogOutputs"> Logstash Outputs</a>,
+### <a name="LogOutputs"> Logstash Outputs</a>
 
 * TCP/UDP
 * Email
@@ -304,12 +308,32 @@ Logstash normalizes different timestamps into your format.
 * Nagios monitoring
 * Alerting tools (Hipchat, SMS)
 * Graphic suites (StatsD, Graphite)
-
-* AMQP
-* Cloudwatch
-* Redis instance receives the log event on the central server and acts as a buffer.
+* Amazon Cloudwatch
 * Mogodb
 
+
+### <a name="Brokers"> Brokers</a>
+
+* AMQP (Advanced Message Queuing Protocol) http://www.amqp.org/
+* Redis from http://redis.io/ receives the log event on the central server and acts as a buffer (port 6379)
+* zMQ at http://zeromq.org/
+
+
+   ```
+input { 
+      redis { 
+              host = > "10.0.0.1" 
+              type = > "redis-input" 
+              data_type = > "list" 
+              key = > "logstash" 
+      }
+output { 
+        stdout { } 
+        elasticsearch { 
+                cluster = > "logstash" 
+        }
+}
+   ```
 
 ### <a name="Filters"> Filters</a>
 labls instead of regex patterns.
@@ -341,6 +365,17 @@ Configure Elasticsearch is described at
 http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
 
 To enable Elasticsearch go in the bin folder and run file elasticsearch.
+
+Indexes are stored in two types of shards (Apache Lucene instances): primary and replica.
+Primary shards are where documents are stored. 
+Five primary shards are created for each new index by default.
+This default can change but not AFTER it is created.
+
+Each primary shard has one replica by default but that can be changed dynamically for scale out or to make an index more resilient. 
+
+Elasticsearch cleverly distributes shards across available nodes such that primary and replica shards for an index are not present on the same <strong>node</strong> that is automatically part of an Elasticsearch cluster.
+
+Elasticsearch moves shards automatically from one node to another in the case of node failure or when new nodes are added.
 
 
 ## <a name="KibanaConfig"> Kibana Configure</a>
