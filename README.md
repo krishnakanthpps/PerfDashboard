@@ -118,10 +118,10 @@ Competitors to Logstash include
 
 | URL to Website | Version | Length |
 | -------------- | ------- | -----: |
-| https://www.elastic.co/downloads/logstash      | 1.5.3 |  88M |
-| https://www.elastic.co/downloads/logstash      | 1.5.3 | 5.8M |
-| https://www.elastic.co/downloads/elasticsearch | 1.7.1 |  27M |
-| https://www.elastic.co/downloads/kibana        | 3.1.3 | 1.0M |
+| https://www.elastic.co/downloads/logstash           | 1.5.3 |  88M |
+| https://www.elastic.co/downloads/logstash Forwarder | 1.5.3 | 5.8M |
+| https://www.elastic.co/downloads/elasticsearch      | 1.7.1 |  27M |
+| https://www.elastic.co/downloads/kibana             | 3.1.3 | 1.0M |
 
 Clicking Download in these web pages will download to your default Downloads folder.
 
@@ -129,26 +129,38 @@ NOTE: Kibana version 4 is a major upgrade over version 3.
 
 2. PROTIP: Create a folder such as *ELK_installers_20150801* so the same set of versions tested together travel together.
 
-3. If you rather download and expand using a script, revise the version number in the script below.
-   Each component is usually installed to a different machine.
-   So a different download installation script is used for each machine.
+3. If you rather download and expand using a script as shown below, revise the version number to the latest ones.
 
    ```
+mkdir ELK_Installers_20150801
 cd ELK_Installers_20150801
 
 wget https://download.elastic.co/logstash/logstash/logstash-1.5.3.tar.gz
-tar -zxvf logstash-1.5.3.tar.gz
-
 wget https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder_darwin_amd64
-
 wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1.tar.gz
-tar -zxvf elasticsearch-1.7.1.tar.gz
-
 wget https://download.elastic.co/kibana/kibana/kibana-3.1.3.tar.gz
-tar -zxvf kibana-3.1.3.tar.gz
    ```
 
-4. Follow the <strong>Installation Steps</strong>
+Instead of `wget`, one can use `curl -O h`.
+
+4. In production mode, each component is usually installed to a separate machine.
+   So a different download installation script is used for each machine.
+
+   ```
+mkdir /usr/local/logstash
+tar zxvf logstash-1.5.3.tar.gz  -C mkdir /usr/local/logstash
+
+mkdir /usr/local/elasticsearch
+tar zxvf elasticsearch-1.7.1.tar.gz  -C /usr/local/elasticsearch
+
+mkdir /usr/local/kibana
+tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
+   ```
+
+It's better if components are referenced in a folder without a version code.
+
+
+5. Follow the <strong>Installation Steps</strong>
 
 
 
@@ -183,10 +195,13 @@ http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
 
 ## <a name="Logstash.conf"> Logstash.conf</a>
-The most basic configuration file:
+A basic Logstash configuration file contains 3 blocks: input, filter, and output.
+Each block contains <strong>plugins</strong>.
 
 ```
-input { stdin { } }
+input { 
+   stdin { } 
+}
 filter {
    grok {
       type => "apache"
@@ -202,6 +217,8 @@ output {
 ## <a name="LogstashForwarder"> Logstash Forwarder</a>
 Logstash Forwarder is written in Go.
 
+<a target="_blank" href="https://www.elastic.co/webinars/logstash-0-60-in-60?baymax=rtp&elektra=downloads&iesrc=ctr">
+VIDEO: Logstash</a>
 
 
 ### <a name="LogSources"> Logstash Sources</a>
