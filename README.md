@@ -116,16 +116,16 @@ Competitors to Logstash include
 ## <a name="DownloadVersions"> Download Version Sets</a>
 1. Identify the set of versions of various components from their web pages:
 
-| URL to Website | Version | Length |
-| -------------- | ------- | -----: |
-| https://www.elastic.co/downloads/logstash           | 1.5.3 |  88M |
-| https://www.elastic.co/downloads/logstash Forwarder | 1.5.3 | 5.8M |
-| https://www.elastic.co/downloads/elasticsearch      | 1.7.1 |  27M |
-| https://www.elastic.co/downloads/kibana             | 3.1.3 | 1.0M |
+  | URL to Website | Version | Length |
+  | -------------- | ------- | -----: |
+  | https://www.elastic.co/downloads/logstash           | 1.5.3 |  88M |
+  | https://www.elastic.co/downloads/logstash Forwarder | 1.5.3 | 5.8M |
+  | https://www.elastic.co/downloads/elasticsearch      | 1.7.1 |  27M |
+  | https://www.elastic.co/downloads/kibana             | 3.1.3 | 1.0M |
 
-Clicking Download in these web pages will download to your default Downloads folder.
+   Clicking Download in these web pages will download to your default Downloads folder.
 
-NOTE: Kibana version 4 is a major upgrade over version 3.
+   NOTE: Kibana version 4 is a major upgrade over version 3.
 
 2. PROTIP: Create a folder such as *ELK_installers_20150801* so the same set of versions tested together travel together.
 
