@@ -114,7 +114,9 @@ Competitors to Logstash include
 
 
 ## <a name="DownloadVersions"> Download Version Sets</a>
-1. Identify the set of versions of various components from their web pages:
+1. Identify the set of versions of various components from their web page
+   <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
+
 
   | URL to Website | Version | Length |
   | -------------- | ------- | -----: |
@@ -170,7 +172,6 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    suggests keeping older binaries in case they get revved out and a script against them.
 
 6. Follow the <strong>Installation Steps</strong> at
-   <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
 
 ## <a name="LogstashConfig"> Logstash Configuration</a>
 1. Create a configuration file using the sublime editor:
