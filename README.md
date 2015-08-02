@@ -210,6 +210,8 @@ output {
    <img src="https://cloud.githubusercontent.com/assets/300046/9026097/35deab0a-38df-11e5-9580-1b3dfc42a242.png" />
 
    Filters are applied in the order they are specified in the .conf file.
+   
+   Field names are specified between `%{` and `}`.
 
 3. Associate .config files with a text editor.
 
@@ -292,11 +294,13 @@ The lifecycle of a log: Record, Transmit, Store, Delete.
 }
    ```
    
-   The Z in the timestamp stands for GMT/UTC "Zulu" time.
-
+   The Z in the timestamp stands for GMT/UTC "Zulu" time, basically London time without the 
+   Summer Time (what the UK calls Daylight Savings Time in the US).
+   
    
 ## <a name="LogFormats"> Log Input Formats</a>,
 Data Formats:
+
 * JSON
 * XML
 * CSV
@@ -310,16 +314,33 @@ Logstash normalizes different timestamps into your format.
 
 
 ### <a name="LogOutputs"> Logstash Outputs</a>
+With the categories of output:
 
-* TCP/UDP
-* Email
-* Files
-* HTTP
-* Nagios monitoring
-* Alerting tools (Hipchat, SMS)
-* Graphic suites (StatsD, Graphite)
-* Amazon Cloudwatch
-* Mogodb
+Relay:
+   * Redis
+   * RabbitMQ
+   * TCP/UDP socket
+   * Kafka
+   * Syslog
+
+Storage:
+   * Elasticsearch
+   * MongoDB
+   * Amazon S3
+   * File
+
+Notification:
+   * PagerDuty
+   * Nagios monitoring
+   * Zabbix.com
+   * Email
+   * Amazon Cloudwatch
+   * Alerting tools (Hipchat, SMS)
+
+Metrics (graphics):
+   * StatsD
+   * Graphite
+   * Ganglia
 
 
 ### <a name="Brokers"> Brokers</a>
@@ -345,14 +366,20 @@ output {
 }
    ```
 
-### <a name="Filters"> Filters</a>
+### <a name="LogstashFilters"> Logstash Filters</a>
 labls instead of regex patterns.
 
-* Grok
-* Grep
-* Alter
-* Date
-* Multiline
+* <strong>grok</strong> uses patterns to extract data into fields.
+* <strong>date</strong> parses timestamps from fields to standardize into a "canonical" date format
+* <strong>mutate</strong> rename, remove, replace, modify fields in events
+* <strong>geoip</strong> determines geographic info. from IP addresses (via Maxmind)
+* <strong>csv</strong> parses comma separated values or other pattern or string
+* <strong>kv</strong> key-value pairs in event data
+* grep
+* alter
+* multiline
+* <strong>ruby</strong> to run arbitrary Ruby-language code.
+
 
 ## <a name="Puppet"> Puppet Modules</a>
 
