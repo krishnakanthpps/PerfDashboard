@@ -214,7 +214,8 @@ output {
    
    See [list of command line flags](https://www.elastic.co/guide/en/logstash/current/_command_line_flags.html)
    
-   All .config files in a folder if one is specified.
+   If a folder is specified, all .conf files in it are loaded.
+   
    
 
 ## <a name="LogstashForwarder"> Logstash Forwarder</a>
