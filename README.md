@@ -197,7 +197,7 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
 
 2. Copy the following and paste into the .conf editor window:
 
-   ```
+   ```JSON
 input { 
        stdin { } 
 }
