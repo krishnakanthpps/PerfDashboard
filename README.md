@@ -166,6 +166,8 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
   Other folders in /usr/local include include, Cellar, Library, opt, lib, bin, sbin, man.
   So a better location may be <strong>/usr/local/opt</strong>?
 
+   A machine must have at least 85% disk space free to avoid <strong>low disk watermark</strong> errors.
+
 5. Once expanded, archive the installer folder and delete the tar.gz files.
 
    http://krypted.com/windows-server/stashbox-turning-a-mac-mini-into-a-logstash-server/
@@ -207,6 +209,28 @@ output {
 4. If using the vi editor, press Esc, then write and quit the vi editor by typing *:wq*.
 
 
+## <a name="LogstashInstall"> Logstash Install</a>
+A sample using the .conf files described above:
+
+```
+#install logstash (based on http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html)
+sudo wget https://download.elasticsearch.org/logstash/logstash/logstash-1.3.3-flatjar.jar
+sudo mkdir /opt/logstash
+sudo mv logstash-1.3.2-flatjar.jar /opt/logstash/logstash.jar
+sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello.conf
+sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello-search.conf
+sudo mv hello.conf /opt/logstash/hello.conf
+sudo mv hello-search.conf /opt/logstash/hello-search.conf
+cd /opt/logstash/
+#example configuration
+java -jar logstash.jar agent -f hello.conf
+java -jar logstash.jar agent -f hello-search.conf
+```
+
+The java here is a JRuby run-time (for performance).
+Logstash is extendable with Ruby.
+
+
 ## <a name="LogstashRun"> Run Logstash</a>
 1. Run Logstash using a script in the bin folder and the .conf file just created:
 
@@ -220,16 +244,7 @@ output {
    
    If a folder is specified, all .conf files in it are loaded.
    
-   
-
-## <a name="LogstashForwarder"> Logstash Forwarder</a>
-Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
-http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
-
-Logstash Forwarder is written in the programming language Go.
-
-<a target="_blank" href="https://www.elastic.co/webinars/logstash-0-60-in-60?baymax=rtp&elektra=downloads&iesrc=ctr">
-VIDEO: Logstash</a>
+   To stop on a Mac, hold down control and press C.
 
 
 ### <a name="LogSources"> Logstash Sources</a>
@@ -291,26 +306,15 @@ labls instead of regex patterns.
 * Multiline
 
 
-## <a name="LogstashInstall"> Logstash Install</a>
-A sample using the .conf files described above:
 
-```
-#install logstash (based on http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html)
-sudo wget https://download.elasticsearch.org/logstash/logstash/logstash-1.3.3-flatjar.jar
-sudo mkdir /opt/logstash
-sudo mv logstash-1.3.2-flatjar.jar /opt/logstash/logstash.jar
-sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello.conf
-sudo wget http://logstash.net/docs/1.3.2/tutorials/10-minute-walkthrough/hello-search.conf
-sudo mv hello.conf /opt/logstash/hello.conf
-sudo mv hello-search.conf /opt/logstash/hello-search.conf
-cd /opt/logstash/
-#example configuration
-java -jar logstash.jar agent -f hello.conf
-java -jar logstash.jar agent -f hello-search.conf
-```
+## <a name="LogstashForwarder"> Logstash Forwarder on Shippers</a>
+Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
+http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
-The java here is a JRuby run-time (for performance).
-Logstash is extendable with Ruby.
+Logstash Forwarder is written in the programming language Go.
+
+<a target="_blank" href="https://www.elastic.co/webinars/logstash-0-60-in-60?baymax=rtp&elektra=downloads&iesrc=ctr">
+VIDEO: Logstash</a>
 
 
 
