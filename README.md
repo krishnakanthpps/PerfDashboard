@@ -185,17 +185,17 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
 
    ```
 input { 
-   stdin { } 
+       stdin { } 
 }
 filter {
-   grok {
-      type => "apache"
-      pattern ==> ['%{COMBINEDAPACHELOG}']
-   }
+        grok {
+                type => "apache"
+                pattern ==> ['%{COMBINEDAPACHELOG}']
+         }
 }
 output {
-   stdout { codec => rubydebug }
-   elasticsearch { embedded => true }
+        stdout { codec => rubydebug }
+        elasticsearch { embedded => true }
 }
    ```
 
@@ -211,10 +211,12 @@ output {
 1. Run Logstash using a script in the bin folder and the .conf file just created:
 
    ```
-   bin/logstash agent --configtest --debug -f logstash.conf
+   bin/logstash agent --debug -f logstash.conf
    ```
    
-   See [list of command line flags](https://www.elastic.co/guide/en/logstash/current/_command_line_flags.html)
+   See <a target="_blank" href="https://www.elastic.co/guide/en/logstash/current/_command_line_flags.html">
+   list of command line flags</a>. 
+   If the command includes `--configtest` or just `-t`, logstash stops after processing it.
    
    If a folder is specified, all .conf files in it are loaded.
    
