@@ -355,9 +355,31 @@ Metrics (graphics):
 ### <a name="Brokers"> Brokers</a>
 
 * AMQP (Advanced Message Queuing Protocol) http://www.amqp.org/
-* Redis from http://redis.io/ receives the log event on the central server and acts as a buffer (port 6379)
 * zMQ at http://zeromq.org/
+* Redis from http://redis.io/ receives the log event on the central server and acts as a buffer (port 6379)
+  
+  The front server
 
+   ```
+input { 
+       file {
+           type = > "syslog" 
+           path = > ["/var/log/secure", "/var/log/messages"] 
+           exclude = > ["*. gz"] }
+   }
+}
+output { 
+      stdout { } 
+      redis { 
+              host = > "10.0.0.1" 
+              data_type = > "list" 
+              key = > "logstash" 
+      }
+}
+   ```
+
+  
+  The backend:
 
    ```
 input { 
@@ -374,7 +396,6 @@ output {
         }
 }
    ```
-
 ### <a name="LogstashFilters"> Logstash Filters</a>
 labls instead of regex patterns.
 
