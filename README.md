@@ -29,17 +29,21 @@ with <strong>only free/open source software</strong>. The components include the
    by absorbing spikes.
 
 0. <strong>Elasticsearch</strong> indexes (inverted) nested aggregations of data in Hadoop.
-0. Elastic's Shield to Secure data in Elasticsearch. 
 0. <strong>Curator</strong> at https://github.com/elasticsearch/curator
    to manage Elasticsearch indexes
    by enabling admins to schedule operations to optimise, close, and delete indexes.
 
 0. <strong>Kibana</strong> does data discovery on elasticsearch cluster to identify "actionable insights"
    and presents visualization (a dashboard).
-   
+
+Elastic also offers cloud services and related <strong>paid</strong> (licensed) software to manage and protect the ELK stack:
+
+0. <strong>Found</strong> 
+0. <strong>Shield</strong> to Secure data in Elasticsearch. 
 0. <strong>Marvel</strong> to Monitor Elasticsearch deployments. 
 0. <a href="#Watcher">Watcher</a> Alerting for Elasticsearch. 
 0. <strong>Packetbeat</strong> to Analyze network packet data. 
+
 
 ## <a name="Why"> Why</a>
 Instead of piping individual logs such as:
@@ -52,12 +56,6 @@ Elasticsearch provides consistency to different time stamp formats.
 
 Kibana "democratizes" data by putting a front-end to access data
 in a searcheable in fast a meaningful ways.
-
-
-## <a name="Managers"> Managers</a>
-1. To manage Logstash ???
-
-3. To manage Kibana ???
 
 
 ## <a name="Docs"> Documentation</a>
@@ -75,7 +73,7 @@ Kibana & Elasticsearch started as an open source project, built by devops people
     https://www.youtube.com/channel/UC1Hc-GPNTYax-vAVCH333ww as Elastic employee.
     His talk: https://www.youtube.com/watch?v=fwMnb4-t8vo
 
- * https://github.com/docker-library/kibana
+   * https://github.com/docker-library/kibana
 
 
 ## <a name="Pricing"> Pricing</a>
@@ -89,6 +87,7 @@ Unlike Splunk, where it's expensive (millions) after the first 500 MB of free.
 ## <a name="Competitors"> Competitors</a>
 
 Competitors to Logstash include 
+
 * Cloudera <a target="_blank" href="https://github.com/cloudera/flume"> Flume</a> +Elasticsearch+Kibana or Flume+HDFS+HIVE+PIG
 * Greylog2
 * Fluentd+MongoDB
@@ -250,6 +249,13 @@ Logstash is extendable with Ruby.
    
    To stop on a Mac, hold down control and press C. On Windows, it's Ctrl+C.
 
+   In production mode, Logstash would be started as a <strong>service</strong> (Unix daemon):
+
+   ```
+   sudo service logstash start
+   ```
+   
+   Logstash sends its own log output to <tt>/var/log/logstash/logstash.log</tt> by default.
 
 ### <a name="LogSources"> Logstash Sources</a>
 Logs into Logstash <strong>brokers</strong> can be from various <strong>shippers</strong> (origins):
@@ -380,6 +386,8 @@ Elasticsearch moves shards automatically from one node to another in the case of
 
 ## <a name="KibanaConfig"> Kibana Configure</a>
 Kibana installs with its own Node.js server. It doesn't use a web server.
+
+A default <strong>config.js</strong> comes with the installer.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
