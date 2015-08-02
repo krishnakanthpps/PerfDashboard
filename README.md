@@ -5,7 +5,7 @@ with <strong>only free/open source software</strong>. The components include the
 
 0. Github for documentation and source control.
 0. Linux Ubuntu (Amazon build) running on all servers for DEB packages installed by command dpkg
-
+0. <a target="_blank" href="https://www.stunnel.org/index.html"> STunnel</a> to secure communications
 0. <a href="#Docker"> Docker</a> to install packages on servers.
 0. <a href="#LogstashForwarder"> Logstash Forwarder</a> 
    on all servers to direct log entry flow to a collector.
@@ -151,6 +151,7 @@ wget https://download.elastic.co/kibana/kibana/kibana-3.1.3.tar.gz
    But for experimentation on a Macbook, all are installed.
 
 5. Decide on the folder where the components are expanded to.
+
    It's better if components are referenced in a folder without a version code.
 
    ```
@@ -164,11 +165,12 @@ mkdir /usr/local/kibana
 tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    ```
 
-  Other folders in /usr/local include include, Cellar, Library, opt, lib, bin, sbin, man.
+   Unix machines install packages under the <strong>/opt</strong> directory.
+   But Macs don't have that by default.
+  
+  Other folders in <strong>/usr/local</strong> include, Cellar, Library, opt, lib, bin, sbin, man.
   So a better location may be <strong>/usr/local/opt</strong>?
 
-  Packages install Logstash into the /opt directory, /opt/ logstash?
-  
   When using a basic OS X Server, it may be:
   
   ```
@@ -214,7 +216,8 @@ output {
    ```
 
    A basic Logstash configuration file contains 3 blocks: input, filter, and output.
-   Each block contains a <strong>plugins</strong>.
+   
+   Each block contains a <strong>plugins</strong> distributed as RubyGems to ease packaging and distribution.
 
    <img src="https://cloud.githubusercontent.com/assets/300046/9026097/35deab0a-38df-11e5-9580-1b3dfc42a242.png" />
 
@@ -356,9 +359,12 @@ Metrics (graphics):
 
 * AMQP (Advanced Message Queuing Protocol) http://www.amqp.org/
 * zMQ at http://zeromq.org/
-* Redis from http://redis.io/ receives the log event on the central server and acts as a buffer (port 6379)
+* Redis from http://redis.io/ receives the log event on the central server and acts as a buffer (port 6379),
+  which should be used only with STunnel or with public information.
   
-  The front server
+  The front server would notice files based on this .conf using just a few of the
+  <a target="_blank" href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html">
+  file plugin's many options</a>.
 
    ```
 input { 
@@ -366,7 +372,7 @@ input {
            type = > "syslog" 
            path = > ["/var/log/secure", "/var/log/messages"] 
            exclude = > ["*. gz"] }
-   }
+        }
 }
 output { 
       stdout { } 
@@ -396,6 +402,7 @@ output {
         }
 }
    ```
+
 ### <a name="LogstashFilters"> Logstash Filters</a>
 labls instead of regex patterns.
 
@@ -428,6 +435,12 @@ VIDEO: Logstash</a>
 
 
 ## <a name="ElasticConfig"> Elasticsearch Configure</a>
+On a Mac with Homebrew installed:
+
+   ```
+   brew install elasticsearch nginx
+   ```
+
 Configure Elasticsearch is described at 
 http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
 
@@ -445,6 +458,36 @@ Elasticsearch cleverly distributes shards across available nodes such that prima
 Elasticsearch moves shards automatically from one node to another in the case of node failure or when new nodes are added.
 
 
+   ```
+   # line 32 - read the comments on why you might not want localhost here
+# for dev box only
+elasticsearch: "http://localhost:9200",
+
+# enable cors for kibana3 + elasticsearch 1.4
+vi /usr/local/Cellar/elasticsearch/1.4.3/config/elasticsearch.yml
+
+# kibana 3 compatibility
+http.cors.enabled: true
+http.cors.allow-origin: http://localhost:8080
+
+# the services command is from the brew/tap at the top, love it
+$ brew services restart elasticsearch
+
+
+# make sure nginx starts by itself
+# nginx config is in /usr/local/etc/nginx/nginx.conf if you need to look at it
+# it won't need any edits for kibana.  it's just js/html in a directory.
+
+# browse to http://localhost:8080/kibana  (you should see a kibana page)
+# Now, let's change the default page to logstash.
+
+cd /usr/local/var/www/kibana/app/dashboards
+mv default.json default.json.orig
+cp logstash.json default.json
+
+# refresh the kibana page.  It will be logstash's default now.
+   ```
+   
 ## <a name="KibanaConfig"> Kibana Configure</a>
 Kibana installs with its own Node.js server. It doesn't use a web server.
 
