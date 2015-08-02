@@ -171,7 +171,8 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    http://krypted.com/windows-server/stashbox-turning-a-mac-mini-into-a-logstash-server/
    suggests keeping older binaries in case they get revved out and a script against them.
 
-6. Follow the <strong>Installation Steps</strong> at
+6. Follow the <strong>Configuration Steps</strong>.
+
 
 ## <a name="LogstashConfig"> Logstash Configuration</a>
 1. Create a configuration file using the sublime editor:
@@ -207,10 +208,10 @@ output {
 
 
 ## <a name="LogstashRun"> Run Logstash</a>
-2. Run Logstash using a script in the bin folder and the .conf file just created:
+1. Run Logstash using a script in the bin folder and the .conf file just created:
 
    ```
-   bin/logstash agent --debug -f logstash.conf
+   bin/logstash agent --configtest --debug -f logstash.conf
    ```
    
    See [list of command line flags](https://www.elastic.co/guide/en/logstash/current/_command_line_flags.html)
@@ -223,7 +224,7 @@ output {
 Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
 http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
 
-Logstash Forwarder is written in Go.
+Logstash Forwarder is written in the programming language Go.
 
 <a target="_blank" href="https://www.elastic.co/webinars/logstash-0-60-in-60?baymax=rtp&elektra=downloads&iesrc=ctr">
 VIDEO: Logstash</a>
