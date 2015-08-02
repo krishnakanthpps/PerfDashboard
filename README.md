@@ -141,10 +141,11 @@ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1
 wget https://download.elastic.co/kibana/kibana/kibana-3.1.3.tar.gz
    ```
 
-Instead of `wget`, one can use `curl -O h`.
+   Instead of `wget`, one can use `curl -O `.
 
 4. In production mode, each component is usually installed to a separate machine.
    So a different download installation script is used for each machine.
+   But for experimentation on a Macbook:
 
    ```
 mkdir /usr/local/logstash
@@ -157,7 +158,7 @@ mkdir /usr/local/kibana
 tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    ```
 
-It's better if components are referenced in a folder without a version code.
+   It's better if components are referenced in a folder without a version code.
 
 
 5. Follow the <strong>Installation Steps</strong>
