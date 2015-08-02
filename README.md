@@ -167,9 +167,18 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
   Other folders in /usr/local include include, Cellar, Library, opt, lib, bin, sbin, man.
   So a better location may be <strong>/usr/local/opt</strong>?
 
-  Packages install Logstash into the /opt directory, /opt/ logstash.
+  Packages install Logstash into the /opt directory, /opt/ logstash?
+  
+  When using a basic OS X Server, it may be:
+  
+  ```
+   /Library/Server/Web/Data/Sites/Default/
+  ```
+   
+   cp -R /usr/local/kibana/kibana-3.0.0/* 
 
-   A machine must have at least 85% disk space free to avoid <strong>low disk watermark</strong> errors.
+  A machine must have at least 85% disk space free to avoid <strong>low disk watermark</strong> errors
+  limiting Logstash operation.
 
 5. Once expanded, archive the installer folder and delete the tar.gz files.
 
