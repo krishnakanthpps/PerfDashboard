@@ -205,7 +205,11 @@ output {
    ```
 
    A basic Logstash configuration file contains 3 blocks: input, filter, and output.
-   Each block contains <strong>plugins</strong>.
+   Each block contains a <strong>plugins</strong>.
+
+   <img src="https://cloud.githubusercontent.com/assets/300046/9026097/35deab0a-38df-11e5-9580-1b3dfc42a242.png" />
+
+   Filters are applied in the order they are specified in the .conf file.
 
 3. Associate .config files with a text editor.
 
@@ -230,8 +234,8 @@ java -jar logstash.jar agent -f hello.conf
 java -jar logstash.jar agent -f hello-search.conf
 ```
 
-The java here is a JRuby run-time (for performance).
-Logstash is extendable with Ruby.
+   The java here is a JRuby run-time (for performance).
+   Logstash is extendable with Ruby.
 
 
 ## <a name="LogstashRun"> Run Logstash</a>
