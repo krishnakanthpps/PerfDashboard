@@ -244,7 +244,7 @@ Logstash is extendable with Ruby.
    
    If a folder is specified, all .conf files in it are loaded.
    
-   To stop on a Mac, hold down control and press C.
+   To stop on a Mac, hold down control and press C. On Windows, it's Ctrl+C.
 
 
 ### <a name="LogSources"> Logstash Sources</a>
@@ -266,6 +266,21 @@ which has a web interface.
 
 The lifecycle of a log: Record, Transmit, Store, Delete.
 
+#### <a name="STDIN_Logstash"> STDIN Logstash</a>
+0. Since STDIN means the command line, type `testing` and press Enter for this debug response:
+
+   ```
+   {
+       "message" => "testing",
+      "@version" => "1",
+    "@timestamp" => "2015-08-02T02:02:06.903Z",
+          "host" => "Wilsons-MacBook-Pro.local"
+}
+   ```
+   
+   The Z in the timestamp stands for GMT/UTC "Zulu" time.
+
+   
 ## <a name="LogFormats"> Log Input Formats</a>,
 Data Formats:
 * JSON
@@ -292,7 +307,7 @@ Logstash normalizes different timestamps into your format.
 
 * AMQP
 * Cloudwatch
-* Redis
+* Redis instance receives the log event on the central server and acts as a buffer.
 * Mogodb
 
 
@@ -305,6 +320,9 @@ labls instead of regex patterns.
 * Date
 * Multiline
 
+## <a name="Puppet"> Puppet Modules</a>
+
+https://forge.puppetlabs.com/modules?q=logstash
 
 
 ## <a name="LogstashForwarder"> Logstash Forwarder on Shippers</a>
@@ -318,17 +336,18 @@ VIDEO: Logstash</a>
 
 
 
+## <a name="ElasticConfig"> Elasticsearch Configure</a>
+Configure Elasticsearch is described at 
+http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
+
+To enable Elasticsearch go in the bin folder and run file elasticsearch.
+
 
 ## <a name="KibanaConfig"> Kibana Configure</a>
 Kibana installs with its own Node.js server. It doesn't use a web server.
 
 A single node is a master, data, and client nodes.
 A node specializes into data and client nodes.
-
-## <a name="ElasticConfig"> Elasticsearch Configure</a>
-Configure Elasticsearch at 
-http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
-
 
 ### <a name="Docker"> Docker package</a>
 
