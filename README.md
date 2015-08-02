@@ -173,7 +173,7 @@ tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
 
 ## <a name="LogstashConfig"> Logstash Configuration</a>
-1. Create a configuration file using the vi editor:
+1. Create a configuration file using the sublime editor:
 
    ```
    subl logstash.conf
@@ -192,13 +192,13 @@ filter {
    }
 }
 output {
-  stdout { codec => rubydebug }
-  elasticsearch { embedded => true }
+   stdout { codec => rubydebug }
+   elasticsearch { embedded => true }
 }
    ```
 
-A basic Logstash configuration file contains 3 blocks: input, filter, and output.
-Each block contains <strong>plugins</strong>.
+   A basic Logstash configuration file contains 3 blocks: input, filter, and output.
+   Each block contains <strong>plugins</strong>.
 
 3. Associate .config files with a text editor.
 
