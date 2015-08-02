@@ -119,7 +119,7 @@ Competitors to Logstash include
   | URL to Website | Version | Length |
   | -------------- | ------- | -----: |
   | https://www.elastic.co/downloads/logstash           | 1.5.3 |  88M |
-  | https://www.elastic.co/downloads/logstash Forwarder | 1.5.3 | 5.8M |
+  | https://www.elastic.co/downloads/logstash Forwarder Mac | 1.5.3 | 5.8M |
   | https://www.elastic.co/downloads/elasticsearch      | 1.7.1 |  27M |
   | https://www.elastic.co/downloads/kibana             | 3.1.3 | 1.0M |
 
@@ -145,7 +145,10 @@ wget https://download.elastic.co/kibana/kibana/kibana-3.1.3.tar.gz
 
 4. In production mode, each component is usually installed to a separate machine.
    So a different download installation script is used for each machine.
-   But for experimentation on a Macbook:
+   But for experimentation on a Macbook, all are installed.
+
+5. Decide on the folder where the components are expanded to.
+   It's better if components are referenced in a folder without a version code.
 
    ```
 mkdir /usr/local/logstash
@@ -158,48 +161,27 @@ mkdir /usr/local/kibana
 tar zxvf kibana-3.1.3.tar.gz  -C /usr/local/kibana
    ```
 
-   It's better if components are referenced in a folder without a version code.
+  Other folders in /usr/local include include, Cellar, Library, opt, lib, bin, sbin, man.
+  So a better location may be <strong>/usr/local/opt</strong>?
 
+5. Once expanded, archive the installer folder and delete the tar.gz files.
 
-5. Follow the <strong>Installation Steps</strong>
+   http://krypted.com/windows-server/stashbox-turning-a-mac-mini-into-a-logstash-server/
+   suggests keeping older binaries in case they get revved out and a script against them.
 
+6. Follow the <strong>Installation Steps</strong> at
+   <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
 
+## <a name="LogstashConfig"> Logstash Configuration</a>
+1. Create a configuration file using the vi editor:
 
-### <a name="InstallMac"> Download and Install ELK on Mac</a>
-1. Visit <a target="_blank" href="https://download.elastic.co/"> https://download.elastic.co</a>
-   and click to download each component.
+   ```
+   subl logstash.conf
+   ```
 
-http://krypted.com/windows-server/stashbox-turning-a-mac-mini-into-a-logstash-server/
-suggests keeping older binaries in case they get revved out and a script against them:
- 
-To download Logstash and unzip it:
+2. Copy the following and paste into the .conf editor window:
 
-```
-wget https://download.elastic.co/logstash/logstash/logstash-1.5.0.tar.gz
-tar -zxvf logstash-1.5.0.tar.gz
-```
-
-## <a name="DownloadInstaller"> Configure</a>
-Kibana installs with its own Node.js server. It doesn't use a web server.
-
-A single node is a master, data, and client nodes.
-A node specializes into data and client nodes.
-
-Configure Elasticsearch at 
-http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
-
-Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
-http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
-
-
-### <a name="Docker"> Docker package</a>
-
-
-## <a name="Logstash.conf"> Logstash.conf</a>
-A basic Logstash configuration file contains 3 blocks: input, filter, and output.
-Each block contains <strong>plugins</strong>.
-
-```
+   ```
 input { 
    stdin { } 
 }
@@ -213,9 +195,32 @@ output {
   stdout { codec => rubydebug }
   elasticsearch { embedded => true }
 }
-```
+   ```
+
+A basic Logstash configuration file contains 3 blocks: input, filter, and output.
+Each block contains <strong>plugins</strong>.
+
+3. Associate .config files with a text editor.
+
+4. If using the vi editor, press Esc, then write and quit the vi editor by typing *:wq*.
+
+
+## <a name="LogstashRun"> Run Logstash</a>
+2. Run Logstash using a script in the bin folder and the .conf file just created:
+
+   ```
+   bin/logstash agent --debug -f logstash.conf
+   ```
+   
+   See [list of command line flags](https://www.elastic.co/guide/en/logstash/current/_command_line_flags.html)
+   
+   All .config files in a folder if one is specified.
+   
 
 ## <a name="LogstashForwarder"> Logstash Forwarder</a>
+Configure for scale by using a Logstash Forwarder and RabbitMQ between a Logstash Producer and Logstash Consumer
+http://jakege.blogspot.in/2014/04/centralized-logging-system-based-on.html
+
 Logstash Forwarder is written in Go.
 
 <a target="_blank" href="https://www.elastic.co/webinars/logstash-0-60-in-60?baymax=rtp&elektra=downloads&iesrc=ctr">
@@ -301,6 +306,22 @@ java -jar logstash.jar agent -f hello-search.conf
 
 The java here is a JRuby run-time (for performance).
 Logstash is extendable with Ruby.
+
+
+
+
+## <a name="KibanaConfig"> Kibana Configure</a>
+Kibana installs with its own Node.js server. It doesn't use a web server.
+
+A single node is a master, data, and client nodes.
+A node specializes into data and client nodes.
+
+## <a name="ElasticConfig"> Elasticsearch Configure</a>
+Configure Elasticsearch at 
+http://jakege.blogspot.sg/2014/03/how-to-install-elasticsearch.html
+
+
+### <a name="Docker"> Docker package</a>
 
 
 ## <a name="Demo"> Demo</a>
